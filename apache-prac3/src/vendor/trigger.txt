@@ -1,0 +1,90 @@
+DELIMITER //
+CREATE TRIGGER topicAFTERINSERT
+AFTER INSERT
+ON topic
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'INSERT', 'topic',
+    CONCAT('classnum: "', NEW.classnum, '"; type: "', NEW.`type`, '"; topicnum: "', NEW.topicnum, 
+      '"; title: "', NEW.title, '"; content: "', NEW.content, '"; hidden: "', NEW.hidden, '"'))//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER topicAFTERUPDATE
+AFTER UPDATE
+ON topic
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'UPDATE', 'topic',
+      TRIM(';' FROM CONCAT_WS(';',
+        CONCAT('classnum: "', OLD.classnum, '" '),
+        CONCAT('type: "', OLD.`type`, '" '),
+        CONCAT('topicnum: "', OLD.topicnum, '" '),
+        IF (NEW.title != OLD.title, CONCAT('changed_title: "', OLD.title, '"=>"', NEW.title, '" '), ''),
+        IF (NEW.subtitle != OLD.subtitle, CONCAT('changed_subtitle: "', OLD.subtitle, '"=>"', NEW.subtitle, '" '), ''),
+        IF (NEW.content != OLD.content, CONCAT('changed_content: "', OLD.content, '"=>"', NEW.content, '" '), ''),
+        IF (NEW.hidden != OLD.hidden, CONCAT('changed_hidden: "', OLD.hidden, '"=>"', NEW.hidden, '" '), '')
+      ))
+    )//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER topicAFTERDELETE
+AFTER DELETE
+ON topic
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'DELETE', 'topic',
+    CONCAT('classnum: "', OLD.classnum, '"; type: "', OLD.`type`, '"; topicnum: "', OLD.topicnum, 
+      '"; title: "', OLD.title, '"; content: "', OLD.content, '"; hidden: "', OLD.hidden, '"'))//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER accountAFTERINSERT
+AFTER INSERT
+ON account
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'INSERT', 'account',
+    CONCAT('login: "', NEW.login, '"; password: "', NEW.`password`, '"; role: "', NEW.role, 
+      '"; surname: "', NEW.surname, '"; name: "', NEW.name, '"; secname: "', NEW.secname, 
+      '"; classnum: "', NEW.classnum, '"; classlit: "', NEW.classlit, '"; confirm: "', NEW.confirm, '"'))//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER accountAFTERUPDATE
+AFTER UPDATE
+ON account
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'UPDATE', 'account',
+      TRIM(';' FROM CONCAT_WS(';',
+        CONCAT('login: "', OLD.login, '" '),
+        IF (NEW.`password` != OLD.`password`, CONCAT('changed_password: "', OLD.`password`, '"=>"', NEW.`password`, '" '), ''),
+        IF (NEW.role != OLD.role, CONCAT('changed_role: "', OLD.role, '"=>"', NEW.role, '" '), ''),
+        IF (CONCAT(NEW.surname, NEW.name, NEW.secname) != CONCAT(OLD.surname, OLD.name, OLD.secname), 
+          CONCAT('changed_name: "', CONCAT(OLD.surname, " ", OLD.name, " ", OLD.secname), '"=>"', 
+          CONCAT(NEW.surname, " ", NEW.name, " ", NEW.secname), '" '), ''),
+        IF (CONCAT(NEW.classnum, NEW.classlit) != CONCAT(OLD.classnum, OLD.classlit), 
+          CONCAT('changed_class: "', CONCAT(OLD.classnum, OLD.classlit), '"=>"', CONCAT(NEW.classnum, NEW.classlit), '" '), ''),
+        IF (NEW.confirm != OLD.confirm, CONCAT('changed_confirm: "', OLD.confirm, '"=>"', NEW.confirm, '" '), '')
+      ))
+    )//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER accountAFTERDELETE
+AFTER DELETE
+ON account
+FOR EACH ROW
+  INSERT INTO `log` (eventdate, login, `action`, tablename, descript)
+    VALUES (NOW(), (SELECT login FROM `session` WHERE `session` = CONNECTION_ID()), 'DELETE', 'account',
+    CONCAT('login: "', OLD.login, '"; password: "', OLD.`password`, '"; role: "', OLD.role, 
+      '"; surname: "', OLD.surname, '"; name: "', OLD.name, '"; secname: "', OLD.secname, 
+      '"; classnum: "', OLD.classnum, '"; classlit: "', OLD.classlit, '"; confirm: "', OLD.confirm, '"'))//
+DELIMITER ;

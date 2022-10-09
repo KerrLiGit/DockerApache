@@ -1,0 +1,151 @@
+/* таблица со ссылками в разделе Обучение */
+
+.wrapper {                      
+	display: grid;
+	grid-gap: 0px;
+	grid-template-rows: auto auto auto;
+  	grid-auto-rows: minmax(100px, auto);
+	text-align: center;
+}
+
+@media (min-width: 0px) {
+
+	/* таблица со ссылками в разделе Обучение */
+
+	.wrapper {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(6, 1fr);
+	}
+
+	.math5 {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.math6 {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.alg7 {
+		grid-column: 1;
+		grid-row: 2;
+	}
+
+	.geo7 {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	.alg8 {
+		grid-column: 1;
+		grid-row: 3;
+	}
+
+	.geo8 {
+		grid-column: 2;
+		grid-row: 3;
+	}
+
+	.alg9 {
+		grid-column: 1;
+		grid-row: 4;
+	}
+
+	.geo9 {
+		grid-column: 2;
+		grid-row: 4;
+	}
+
+	.math10 {
+		grid-column: 1;
+		grid-row: 5;
+	}
+
+	.geo10 {
+		grid-column: 2;
+		grid-row: 5;
+	}
+
+	.math11 {
+  		grid-column: 1;
+		grid-row: 6;
+	}
+
+	.geo11 {
+  		grid-column: 2;
+		grid-row: 6;
+	}
+
+}
+
+@media (min-width: 800px) {
+
+	/* таблица со ссылками в разделе Обучение */
+
+	.wrapper {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+	}
+
+	.math5 {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.math6 {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.alg7 {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.geo7 {
+		grid-column: 4;
+		grid-row: 1;
+	}
+
+	.alg8 {
+		grid-column: 1;
+		grid-row: 2;
+	}
+
+	.geo8 {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	.alg9 {
+		grid-column: 3;
+		grid-row: 2;
+	}
+
+	.geo9 {
+		grid-column: 4;
+		grid-row: 2;
+	}
+
+	.math10 {
+		grid-column: 1;
+		grid-row: 3;
+	}
+
+	.geo10 {
+		grid-column: 2;
+		grid-row: 3;
+	}
+
+	.math11 {
+		grid-column: 3;
+		grid-row: 3;
+	}
+
+	.geo11 {
+		grid-column: 4;
+		grid-row: 3;
+	}
+
+}
