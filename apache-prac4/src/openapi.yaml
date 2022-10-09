@@ -1,0 +1,383 @@
+openapi: 3.0.3
+info:
+  title: Teacher Website - OpenAPI 3.0
+  description: |-
+    This is a Contact Book for saving your contacts based on the OpenAPI 3.0 specification.
+  version: 1.0.11
+servers:
+  - url: http://teacherapi.local
+tags:
+  - name: api/account
+    description: API for work with account
+  - name: api/topic
+    description: API for work wth topic
+paths:
+  /api/account:
+    get:
+      tags:
+        - api/account
+      summary: Finds accounts
+      operationId: getAllAccount
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/account'
+        '401':
+          description: You must be authorized to view this page
+        '501':
+          description: The requested method is not implemented
+    post:
+      tags:
+        - api/account
+      summary: Add a new account to the website
+      description: Add a new account to the website
+      operationId: insertAccount
+      requestBody:
+        description: Create a new account
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/account'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account' 
+        '401':
+          description: You must be authorized to view this page
+        '500':
+          description: The server encountered an error processing your request
+        '501':
+          description: The requested method is not implemented
+  /api/account/{login}:
+    get:
+      tags:
+        - api/account
+      summary: Find account by login
+      description: Returns a single account
+      operationId: getAccount
+      parameters:
+        - name: login
+          in: path
+          description: Login of account to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        '401':
+          description: You must be authorized to view this page
+        '404':
+          description: Account not found
+        '501':
+          description: The requested method is not implemented
+    put:
+      tags:
+        - api/account
+      summary: Update account by login
+      description: Returns a single account
+      operationId: updateAccount
+      parameters:
+        - name: login
+          in: path
+          description: Login of account to update
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        '401':
+          description: You must be authorized to view this page
+        '404':
+          description: Account not found
+        '500':
+          description: The server encountered an error processing your request
+        '501':
+          description: The requested method is not implemented
+    delete:
+      tags:
+        - api/account
+      summary: Deletes an account
+      description: Deletes an account
+      operationId: deleteAccount
+      parameters:
+        - name: login
+          in: path
+          description: Login of account to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Account deleted
+        '401':
+          description: You must be authorized to view this page
+        '500':
+          description: The server encountered an error processing your request
+        '404':
+          description: Account not found
+        '501':
+          description: The requested method is not implemented
+  /api/topic:
+    get:
+      tags:
+        - api/topic
+      summary: Finds topics
+      operationId: getAllTopic
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/topic'
+        '401':
+          description: You must be authorized to view this page
+        '501':
+          description: The requested method is not implemented
+    post:
+      tags:
+        - api/topic
+      summary: Add a new topic to the website
+      description: Add a new topic to the website
+      operationId: insertTopic
+      requestBody:
+        description: Create a new topic
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/topic'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/topic' 
+        '401':
+          description: You must be authorized to view this page
+        '500':
+          description: The server encountered an error processing your request
+        '501':
+          description: The requested method is not implemented
+  /api/topic/{classnum}/{type}/{topicnum}:
+    get:
+      tags:
+        - api/topic
+      summary: Find account by classnum, type, topicnum
+      description: Returns a single topic
+      operationId: getTopic
+      parameters:
+        - name: classnum
+          in: path
+          description: Classnum of topic to return
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          description: Type of topic to return
+          required: true
+          schema:
+            type: string
+        - name: topicnum
+          in: path
+          description: Number of topic to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/topic'
+        '401':
+          description: You must be authorized to view this page
+        '404':
+          description: Account not found
+        '501':
+          description: The requested method is not implemented
+    put:
+      tags:
+        - api/topic
+      summary: Update topic by classnum, type, topicnum
+      description: Returns a single topic
+      operationId: updateTopic
+      parameters:
+        - name: classnum
+          in: path
+          description: Classnum of topic to return
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          description: Type of topic to return
+          required: true
+          schema:
+            type: string
+        - name: topicnum
+          in: path
+          description: Number of topic to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        '401':
+          description: You must be authorized to view this page
+        '404':
+          description: Account not found
+        '500':
+          description: The server encountered an error processing your request
+        '501':
+          description: The requested method is not implemented
+    delete:
+      tags:
+        - api/topic
+      summary: Deletes a topic
+      description: Deletes a topic
+      operationId: deleteTopic
+      parameters:
+        - name: classnum
+          in: path
+          description: Classnum of topic to delete
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          description: Type of topic to delete
+          required: true
+          schema:
+            type: string
+        - name: topicnum
+          in: path
+          description: Number of topic to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Topic deleted
+        '401':
+          description: You must be authorized to view this page
+        '500':
+          description: The server encountered an error processing your request
+        '404':
+          description: Account not found
+        '501':
+          description: The requested method is not implemented
+components:
+  schemas:
+    account:
+      type: object
+      properties:
+        login:
+          type: string
+          example: ivan
+        pass:
+          type: string
+          example: qwerty
+        role:
+          type: string
+          example: student
+        surname:
+          type: string
+          example: Иванов
+        name:
+          type: string
+          example: Иван
+        secname:
+          type: string
+          example: Иванович
+        classnum:
+          type: integer
+          example: 5
+        classlit:
+          type: string
+          example: А
+        confirm:
+          type: boolean
+          example: 0
+    topic:
+      type: object
+      properties:
+        classnum:
+          type: integer
+          example: 5
+        type:
+          type: string
+          example: math
+        topicnum:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Title
+        subtitle:
+          type: string
+          example: Subtitle
+        content:
+          type: string
+          example: This is topic content.
+        hidden:
+          type: string
+          example: This is hidden topic content.
+  requestBodies:
+    account:
+      description: Account object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/account'
+    topic:
+      description: Topic object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/topic'
