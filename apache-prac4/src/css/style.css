@@ -1,0 +1,168 @@
+body {
+	background-color: floralwhite;
+	font-family: "Montserrat";
+}
+
+menu {
+	width: 100%;
+	position: fixed;
+	top: -1em;
+	right: -1.9em;   
+}
+
+.image_block {
+	position: absolute;
+	width: 100%;
+	height: 21em;
+	overflow: hidden;
+	left: -0px;       
+}
+
+.image_block .back_image {
+	position: absolute;   
+	z-index: 0;
+	top: 0em;
+	left: 0em;                   
+}
+
+@media (min-width: 0px) {
+
+	#unic_content {
+		font-size: 1em;      
+		text-align: justify;
+	}
+
+	/* размер поля многострочного ввода в Кабинете */
+	.longinput {        
+		width: 300px;
+		height: 100px;
+		resize: auto;
+	}
+	
+	/* размер поля ввода заголовков в Кабинете */
+	.input {
+		width: auto;
+	}
+
+}
+
+@media (min-width: 800px) {
+
+	#unic_content {
+		font-size: 1em;
+		text-align: justify; 
+	}
+
+	/* размер поля многострочного ввода в Кабинете */
+	.longinput {        
+		width: 500px;
+		height: 100px;
+		resize: auto;
+	}
+	
+	/* размер поля ввода заголовков в Кабинете */
+	.input {
+		width: 370px;
+	}
+
+}
+
+/* общий стиль для уникального контента на каждой странице */
+
+#unic_content {
+	font-size: 1em;
+	padding-top: 5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: justify;
+	line-height: 1.7;
+}
+
+/* адаптивное изображение */
+
+#adapt_image {
+	width: 100%;
+	height: auto;     
+}
+
+/* заголовок текста */
+
+article {
+	color: darkblue;
+	font-weight: bold;
+	font-size: 1.3em;
+	padding-bottom: 0.2em;
+}
+
+/* класс якоря для смещения */
+
+a.anchor {
+	display: block;
+	position: relative;
+	top: -4.5em;
+}
+
+/* форматирование ссылок */
+
+a {
+}
+
+a:link {
+	text-decoration: none; 
+	color: darkblue;
+}
+
+a:active {
+	text-decoration: none;
+	color: darkblue; 
+}
+
+a:visited {
+	text-decoration: none;
+	color: darkblue;
+}
+
+a:hover {
+	text-decoration: none;
+	color: cornflowerblue;
+}
+
+/* "галочка", выделение важного */
+
+.checkmark {
+	font-weight: bold;
+	color: darkblue;
+}
+
+#button {     
+	background-color: darkblue;
+	//padding: 1em;	
+}
+
+button {
+	font-size: 1em;
+	background-color: darkblue;
+	color: floralwhite;
+	border: 0.1em solid;
+	border-color: darkblue;
+}
+
+button:link {
+	text-decoration: none; 
+	color: darkblue;
+}
+
+button:active {
+	text-decoration: none;
+	color: floralwhite; 
+}
+
+button:visited {
+	text-decoration: none;
+	color: floralwhite;
+}
+
+button:hover {
+	text-decoration: none;
+	color: cornflowerblue;
+}

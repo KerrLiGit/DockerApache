@@ -1,0 +1,21 @@
+/* таблица */
+
+.cboard { 
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.cboard td {
+	border: 1px solid;
+	border-color: rgba(0, 0, 139, 0.212);
+	text-align: left;
+	padding: 2px;
+}
+
+.cboard tr:nth-child(even) { 	
+	background: rgba(255, 255, 255, 0.521);     
+}
+
+.cboard tr:nth-child(odd) {
+	background: rgba(0, 0, 139, 0.212); 
+}

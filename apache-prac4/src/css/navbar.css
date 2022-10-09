@@ -1,0 +1,100 @@
+/* изменение внешнего видв панели навигации при различной ширине экрана */
+
+#content {
+	z-index: 9998;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	row-gap: 1em;
+	column-gap: 1.5em;
+	user-select: none;
+	font-size: 1em;
+	padding: 0.5em;
+	padding-left: 1.4em;
+	background-color: darkblue;
+}
+
+.box1 {
+	flex-grow: 20;
+	font-size: 1em;
+	text-align: left;
+	color: floralwhite;
+	margin-right: auto;
+}
+
+.box1o {
+	flex-grow: 1;
+	font-size: 1.2em;
+	text-align: left;
+	color: floralwhite;
+	margin-right: auto;
+	position: fixed;
+	right: 0.8em;
+	top: 0.8em;
+	user-select: none;
+	z-index: 9999;
+}
+
+.box1c {
+	flex-grow: 1;
+	font-size: 2.2em;
+	text-align: left;
+	color: floralwhite;
+	position: fixed;
+	right: 0.4em;
+	top: 0.2em;
+	user-select: none;
+	z-index: 9999;
+}
+  
+.box2 {
+	flex-grow: 1;
+	text-align: center;
+	color: floralwhite;
+	margin-right: 2em;
+	display: inline;
+	//background-color: red;
+}
+
+.box1 .name {
+	font-size: 1.5em;
+	line-height: normal;
+}
+
+.nava {
+	font-size: 1em;
+}
+
+.nava:link {
+	text-decoration: none; 
+	color: floralwhite;
+}
+
+.nava:active {
+	text-decoration: none;
+	color: floralwhite; 
+}
+
+.nava:visited {
+	text-decoration: none;
+	color: floralwhite;
+}
+
+.nava:hover {
+	text-decoration: none;
+	color: cornflowerblue;
+}
+
+@media (min-width: 0px) {	
+	#content {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 800px) {
+	
+	#content {
+		flex-direction: row;
+	}
+}

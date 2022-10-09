@@ -1,0 +1,53 @@
+/* адаптивная сетка для сертификатов */
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.photo {
+	float: left;
+	padding: 0px;
+}
+
+.photo img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border: 5px solid darkblue;
+}
+
+#gallery {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.photo a:hover {
+	opacity: 0.5;
+}
+
+.photo a {
+	display: block;
+	position: relative;
+}
+
+/* вывод иконки глаза поверх изображения */
+
+.photo a:after {
+	content: '';
+	background: transparent url(img/eye-icon.png) no-repeat center;
+	width: 52px;
+	height: 35px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	visibility: hidden;
+}
+
+.photo:hover > a:after {
+	visibility: visible;
+}

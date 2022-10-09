@@ -1,0 +1,96 @@
+/* стиль боковой панели в разделе Олимпиады */
+
+#panel {
+	font-size: 1em;
+	text-align: left;
+	color: darkblue;
+	padding-bottom: 15px;
+}
+
+#panel:hover {
+	font-size: 1em;
+	text-align: left;
+	color: cornflowerblue;
+	padding-bottom: 15px;
+}
+
+#anchor_content {
+	z-index: 9998;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: left;
+	row-gap: 20px;
+	column-gap: 50px;
+	user-select: none;
+	font-size: 1em;
+}
+
+@media (min-width: 0px) {
+
+	/* таблица для боковой панели, основного текста и слайдера с сертификатами, смартфон */
+
+	.anchor_wrapper {
+		display: grid;
+		grid-template-columns: repeat(9, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+	  	grid-auto-rows: minmax(100px, auto);
+		text-align: left;
+	}
+	
+	.anchor_menu {
+		grid-column: 1 / 2;
+		grid-row: 1;
+		font-weight: bold;
+		_position: sticky; /* меню начинает оставаться на месте при прокрутке */
+		top: 100px;
+		visibility: collapse;
+	}
+	
+	.anchor_main {
+		grid-column: 1 / 10;
+		grid-row: 1;
+		padding-left: 10px;
+	}
+	
+	/*.anchor_button {
+		grid-column: 1 / 10;
+		grid-row: 2;
+	}*/
+
+}
+
+@media (min-width: 800px) {
+
+	/* таблица для боковой панели, основного текста и слайдера с сертификатами, десктоп */
+
+	.anchor_wrapper {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+  		grid-auto-rows: minmax(100px, auto);
+		text-align: left;
+	}
+
+	.anchor_menu {
+		grid-column: 1 / 2;
+		grid-row: 1;
+		font-weight: bold;
+		_position: sticky;
+		top: 100px;
+		visibility: visible;
+	}
+
+	.anchor_main {
+		grid-column: 2 / /*11*/13; /*сменить при возврете anchor_button*/
+		grid-row: 1;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	
+	/*.anchor_button {
+		grid-column: 11 / 13;
+		grid-row: 1;
+	}*/
+}

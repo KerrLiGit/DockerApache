@@ -1,0 +1,90 @@
+form {
+	background-color: floralwhite;
+}
+
+.app-router-container {
+	display: flex;
+	background-color: floralwhite;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	box-sizing: border-box;
+}
+
+.auth-form {
+	padding: 2em;
+	margin: auto;
+	max-width: 300px;
+	box-shadow: 0 3px 14px rgb(0 0 0 / 12%), 0 8px 10px rgb(0 0 0 / 14%), 0 5px 5px rgb(0 0 0 / 20%);
+}
+
+input {
+	display:block;
+	width: 80%;
+	border-bottom:0.1em solid #e3e3e3;
+	padding: 0.3em 0.7em;
+	margin: 0.6em auto;
+}
+
+label {
+	margin-left: 2em;
+}
+
+select {
+	width: 80%;
+	margin-left:-0.2em;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+button {
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	background-color: darkblue;
+	border-radius: 2px;
+	margin: 10px 0 0 60%;
+	padding: 0 8px;
+	color: floralwhite;
+}
+
+button:hover {
+	color: cornflowerblue;
+}
+
+input[type="submit"]{
+	cursor:pointer;
+}
+.message{color:red;}
+*{
+	padding: 0;
+	margin:0;
+	border:0;
+}
+*,*:before,*:after{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+html,body{
+	height:100%;
+	width:100%;
+	line-height:1;
+	font-size:14px;
+	-ms-text-size-adjust:100%;
+	-moz-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-focus-inner{padding:0; border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+body{font-family: 'Montserrat', sans-serif;}
+.form-name{
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 18px;
+}
