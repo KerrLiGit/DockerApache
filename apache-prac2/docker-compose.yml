@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0   
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d 
+      - ./mysql-data:/var/lib/mysql/  
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links: 
+      - mysql:db
+    ports:
+      - 8765:80
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
+
+  drawer:
+    build: /web
+    ports:
+      - 8081:80
+    volumes: 
+      - ./src/drawer:/var/www/html
+      - ./src/lib:/var/www/html/lib
+        
+  sorter:
+    build: /web
+    ports:
+      - 8082:80
+    volumes: 
+      - ./src/sorter:/var/www/html
+      - ./src/lib:/var/www/html/lib
+   
+  admin:
+    build: /web
+    ports:
+      - 8083:80
+    volumes: 
+      - ./src/admin:/var/www/html
+      - ./src/lib:/var/www/html/lib
+           
+   
