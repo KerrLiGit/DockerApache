@@ -267,13 +267,13 @@ class Model_Api extends Model {
 				if ($response == null) {
 					$response['message'] = '500: The server encountered an error processing your request.';
 				}
-			} // PUT /api/account/:classnum/:type/:topicnum
+			} // PUT /api/topic/:classnum/:type/:topicnum
 			else if ($request_method == 'put' && !empty($params)) {
 				$response = $this->update_topic($request, $params);
 				if ($response == null) {
 					$response['message'] = '500: The server encountered an error processing your request.';
 				}
-			} // DELETE /api/account/:login
+			} // DELETE /api/topic/:login
 			else if ($request_method == 'delete' && !empty($params)) {
 				$this->delete_topic($params);
 				$response['message'] = 'Account deleted';
